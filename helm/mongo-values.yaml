@@ -1,0 +1,81 @@
+deployment:
+  name: mongo-back-api-slack-connector
+  replicas: 1
+  namespace: devops
+  image:
+    name: 'mongo:6.0'
+    policy: IfNotPresent
+  imagePullSecrets:
+    status: 'false'
+  hostAliases:
+    status: 'false'
+  ports:
+    status: 'true'
+    list:
+      - port: 27017
+  env:
+    status: 'false'
+  secrets:
+  - status: 'false'
+    tpye: Opaque
+    constraint: data
+    list:
+    - name: mongo-admin
+      env: MONGO_INITDB_ROOT_USERNAME
+      value: 'ZVAzRmh1MUY5OTNydWhXNlVvQ04K'
+    - name: mongo-password
+      env: MONGO_INITDB_ROOT_PASSWORD
+      value: 'OEQxNDI2M2NFNUpRZ01aTnZicjgK'
+  securityContext:
+    status: 'false'
+  command:
+    status: 'false'
+  args:
+    status: 'false'
+  resources:
+    status: 'true'
+    requests:
+      memory: '100Mi'
+      cpu: '50m'
+    limits:
+      memory: '300Mi'
+      cpu: '150m'
+
+persistences:
+  - status: 'true'
+    name: db
+    mountPath: /data/db
+    PVstorageSpace: 5Gi
+    PVCstorageSpace: 5Gi
+    accessModes: 
+    - mode: ReadWriteMany
+    type: nfs
+    nfs:
+      server: 192.168.2.50
+      path: /mnt/md1/mongo-back-api-slack-connector
+
+service:
+  nodePort:
+  - status: 'false'
+  clusterIp:
+  - status: 'false'
+    name: 'back-api-slack-connector'
+    deploymentPort: 27017
+    servicePort: 27017
+    ingress:
+      status: 'false'
+      path: /
+      pathType: Prefix
+      domain: pre.mongo.back-api-slack-connector.com
+  loadBalancer:
+  - status: 'true'
+    name: 'mongo-back-api-slack-connector'
+    deploymentPort: 27017
+    servicePort: 27017 
+
+ingress:
+  className: nginx
+
+tls:
+  status: 'false'
+  clusterIssuer: ca-cluster-issuer
