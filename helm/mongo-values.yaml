@@ -22,10 +22,10 @@ deployment:
     list:
     - name: mongo-admin
       env: MONGO_INITDB_ROOT_USERNAME
-      value: 'ZVAzRmh1MUY5OTNydWhXNlVvQ04K'
+      value: 'XXX'
     - name: mongo-password
       env: MONGO_INITDB_ROOT_PASSWORD
-      value: 'OEQxNDI2M2NFNUpRZ01aTnZicjgK'
+      value: 'XXX'
   securityContext:
     status: 'false'
   command:
