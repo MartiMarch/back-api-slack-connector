@@ -140,6 +140,22 @@
 		                <failOnViolation>true</failOnViolation>
 		            </configuration>
 		        </plugin>
+			<plugin>
+		            <groupId>org.owasp</groupId>
+		            <artifactId>dependency-check-maven</artifactId>
+		            <version>7.0.4</version>
+		            <executions>
+		                <execution>
+		                    <goals>
+		                        <goal>check</goal>
+		                    </goals>
+		                </execution>
+		            </executions>
+		            <configuration>
+		                <format>HTML</format>
+		                <outputDirectory>target/dependency-check-report</outputDirectory>
+		            </configuration>
+		        </plugin>
 		</plugins>
 	</build>
 </project>
