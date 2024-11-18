@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.valentiasoft</groupId>
 	<artifactId>back-api-slack-connector</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>back-api-slack-connector</name>
 	<description>Proyecto empleado para integrar Slack</description>
 	<properties>
