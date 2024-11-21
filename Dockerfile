@@ -1,0 +1,7 @@
+FROM openjdk:17-jdk-slim
+
+ARG APP_VERSION
+ARG APP_NAME
+
+COPY target/$APP_NAME-$APP_VERSION.jar $APP_NAME-$APP_VERSION.jar
+CMD ["java", "-jar", "$APP_NAME-$APP_VERSION.jar"]
